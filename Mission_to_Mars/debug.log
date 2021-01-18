@@ -17,3 +17,8 @@
 [0114/125254.050:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [0114/135804.456:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [0114/171834.419:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0117/204546.186:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0117/233410.699:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0117/235720.405:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0118/000040.631:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\tmlun\AppData\Local\Temp\scoped_dir11148_1375309035\Crashpad\attachments\23faf802-aa15-433c-a44b-79795f2cc4f5: The system cannot find the path specified. (0x3)
+[0118/002641.879:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
