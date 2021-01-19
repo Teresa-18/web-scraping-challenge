@@ -51,29 +51,29 @@ def scrape():
     print(mars_facts)
 
 
-    # # Mars Hemispheres
-
     hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemispheres_url)
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
-    mars_hemisphere = []
+    hemisphere_image_urls = []
 
-    products = soup.find("div", class_ = "result-list" )
-    hemispheres = products.find_all("div", class_="item")
+    mars = soup.find("div", class_ = "result-list" )
+    hemispheres = mars.find_all("div", class_="item")
 
     for hemisphere in hemispheres:
         title = hemisphere.find("h3").text
         title = title.replace("Enhanced","")
         end_link = hemisphere.find("a")["href"]
         image_link = "https://astrogeology.usgs.gov/" + end_link    
+       
         browser.visit(image_link)
         html = browser.html
         soup=BeautifulSoup(html, "html.parser")
         downloads = soup.find("div", class_="downloads")
         image_url = downloads.find("a")["href"]
-        mars_hemisphere.append({"title": title, "img_url": image_url})
-
+        hemisphere_image_urls.append({"title": title, "img_url": image_url})
+        print(hemisphere_image_urls)
+        
     browser.quit()
 # In[ ]:
     dictionary = {
@@ -82,7 +82,7 @@ def scrape():
         "news_paragraph": news_p,
         "featured_image": featured_image_url,
         "mars_facts": mars_facts,
-        "mars_hemisphere": mars_hemisphere
+        "mars_hemisphere": hemisphere_image_urls
     }
 
     return dictionary
