@@ -42,16 +42,12 @@ def scrape():
     print(featured_image_url)
 
 
-    # # Mars Facts
-
     # In[8]:
-
-
-    facts_url = "https://space-facts.com/mars/"
-    browser.visit(facts_url)
-    mars_info = pd.read_html(facts_url)
-    mars_info = pd.DataFrame(mars_info[0])
-    mars_facts = mars_info.to_html(header = True, index = False).replace ("<th>0</th>", "<th>Description</th>").replace ("<th>1</th>", "<th>Mars</th>")
+    mars_facts_url = "https://space-facts.com/mars/"
+    browser.visit(mars_facts_url)
+    tables = pd.read_html(mars_facts_url)
+    mars_table = pd.DataFrame(tables[0])
+    mars_facts = mars_table.to_html(header = True, index = False).replace ("<th>0</th>", "<th>Description</th>").replace ("<th>1</th>", "<th>Mars</th>")
     print(mars_facts)
 
 
