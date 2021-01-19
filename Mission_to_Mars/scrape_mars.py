@@ -12,49 +12,33 @@ def scrape():
 
 
     # In[2]:
-
-
     executable_path = {'executable_path':'c:\\Users\\medinam\\Downloads\\chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
 
-
-    # # NASA Mars News
-
     # In[3]:
-
-
-    article_url="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
-    browser.visit(article_url)
+    url="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
+    browser.visit(url)
     html = browser.html
     soup = BeautifulSoup(html, "html.parser")
 
 
     # In[4]:
-
-
-    article = soup.find("div", class_='list_text')
-    news_title = article.find("div", class_="content_title").text
-    news_p = article.find("div", class_="article_teaser_body").text
+    results = soup.find_all('div', class_='list_text')[0]
+    news_title = results.find('div', class_="content_title").text
+    news_p = results.find('div', class_="article_teaser_body").text
     print(news_title)
     print(news_p)
 
-
-    # # JPL Mars Space Images - Featured Image
-
     # In[5]:
-
-
-    image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
-    browser.visit(image_url)
+    url = 'https://www.jpl.nasa.gov/images/'
+    browser.visit(url)
     html = browser.html
-    soup = BeautifulSoup(html, "html.parser")
+    Soup = BeautifulSoup(html, "html.parser")
 
 
     # In[6]:
-
-
-    image = soup.find("img", class_="thumb")["src"]
-    featured_image_url = "https://www.jpl.nasa.gov" + image
+    image = Soup.find_all('img')[2]["src"]
+    featured_image_url = image
     print(featured_image_url)
 
 
